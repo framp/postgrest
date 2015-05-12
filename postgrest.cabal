@@ -43,6 +43,7 @@ executable postgrest
                      , vector
                      , mtl
                      , cassava
+                     , jwt
   Other-Modules:       App
                      , Auth
                      , Config
@@ -102,3 +103,4 @@ Test-Suite spec
                      , cassava
                      , process
                      , heredoc
+                     , jwt

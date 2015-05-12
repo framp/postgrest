@@ -3,7 +3,7 @@ module App (app, sqlError, isSqlError) where
 
 import Control.Monad (join)
 import Control.Arrow ((***), second)
-import Control.Applicative
+import Control.Applicative --7.10 redundant
 
 import Data.Text hiding (map)
 import Data.Maybe (fromMaybe, mapMaybe)
@@ -34,13 +34,14 @@ import qualified Hasql as H
 import qualified Hasql.Backend as B
 import qualified Hasql.Postgres as P
 
+import Config (AppConfig(..))
 import Auth
 import PgQuery
 import RangeQuery
 import PgStructure
 
-app :: Text -> BL.ByteString -> Request -> H.Tx P.Postgres s Response
-app v1schema reqBody req =
+app :: AppConfig -> BL.ByteString -> Request -> H.Tx P.Postgres s Response
+app conf reqBody req =
   case (path, verb) of
     ([], _) -> do
       body <- encode <$> tables (cs schema)
@@ -101,6 +102,23 @@ app v1schema reqBody req =
             [ jsonH
             , (hLocation, "/postgrest/users?id=eq." <> cs (userId u))
             ] ""
+
+    (["postgrest", "sessions"], "POST") -> do
+      let user = decode reqBody :: Maybe AuthUser
+
+      case user of
+        Nothing -> return $ responseLBS status400 [jsonH] $
+          encode . object $ [("message", String "Failed to parse user.")]
+        Just u -> do
+          setRole authenticator
+          login <- signInRole (cs $ userId u)
+                          (cs $ userPass u)
+          case login of
+            LoginSuccess role -> 
+              return $ responseLBS status201 [ jsonH ] $
+                encode . object $ [("token", String $ tokenJWT jwtSecret (cs $ userId u) role)]
+            _  -> return $ responseLBS status400 [jsonH] $
+              encode . object $ [("message", String "Failed authentication.")]
 
     ([table], "POST") -> do
       let qt = QualifiedTable schema (cs table)
@@ -189,7 +207,9 @@ app v1schema reqBody req =
     verb   = requestMethod req
     qq     = queryString req
     hdrs   = requestHeaders req
-    schema = requestedSchema v1schema hdrs
+    schema = requestedSchema (cs $ configV1Schema conf) hdrs
+    authenticator = cs $ configDbUser conf
+    jwtSecret = cs $ configJwtSecret conf
     range  = rangeRequested hdrs
     allOrigins = ("Access-Control-Allow-Origin", "*") :: Header
 

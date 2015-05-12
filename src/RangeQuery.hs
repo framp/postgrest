@@ -6,7 +6,7 @@ module RangeQuery (
 , NonnegRange
 ) where
 
-import Control.Applicative
+import Control.Applicative --7.10 redundant
 import Network.HTTP.Types.Header
 
 import qualified Data.ByteString.Char8 as BS

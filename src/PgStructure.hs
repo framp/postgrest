@@ -9,7 +9,7 @@ import Data.Aeson
 import Data.Functor.Identity
 import Data.String.Conversions (cs)
 import Data.Maybe (fromMaybe)
-import Control.Applicative ( (<$>) )
+import Control.Applicative ( (<$>) ) --7.10 redundant
 
 import qualified Data.Map as Map
 

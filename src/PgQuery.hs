@@ -17,7 +17,7 @@ import qualified Data.ByteString.Char8 as BS
 import Data.Monoid
 import Data.Vector (empty)
 import Data.Maybe (fromMaybe, mapMaybe)
-import Data.Functor ( (<$>) )
+import Data.Functor ( (<$>) ) --7.10 redundant
 import Control.Monad (join)
 import Data.String.Conversions (cs)
 import qualified Data.Aeson as JSON
