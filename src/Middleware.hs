@@ -39,7 +39,7 @@ authenticated conf app req = do
  where
    jwtSecret = cs $ configJwtSecret conf
    currentRole = cs $ configDbUser conf
-   anon = cs $ configDbUser conf
+   anon = cs $ configAnonRole conf
    httpRequesterRole :: RequestHeaders -> H.Tx P.Postgres s LoginAttempt
    httpRequesterRole hdrs = do
     let auth = fromMaybe "" $ lookup hAuthorization hdrs

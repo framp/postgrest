@@ -60,7 +60,7 @@ Test-Suite spec
   Default-Language:    Haskell2010
   default-extensions:  OverloadedStrings, ScopedTypeVariables, QuasiQuotes
   Hs-Source-Dirs:      test, src
-  ghc-options:         -Wall -W -Werror
+  ghc-options:         -Wall -W
   Main-Is:             Main.hs
   Other-Modules:       App
                      , Auth
