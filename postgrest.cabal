@@ -75,8 +75,8 @@ Test-Suite spec
                      , SpecHelper
   Build-Depends:       base, hspec >= 2.1.2, QuickCheck
                      , hspec-wai >= 0.5.0, hspec-wai-json
-                     , hasql == 0.7.3, hasql-backend == 0.4.1
-                     , hasql-postgres == 0.10.3
+                     , hasql == 0.7.3.1, hasql-backend == 0.4.1
+                     , hasql-postgres == 0.10.3.1
                      , warp, wai
                      , packdeps, hlint
                      , HTTP, convertible
