@@ -3,7 +3,7 @@ module App (app, sqlError, isSqlError) where
 
 import Control.Monad (join)
 import Control.Arrow ((***), second)
-import Control.Applicative --7.10 redundant
+import Control.Applicative
 
 import Data.Text hiding (map)
 import Data.Maybe (fromMaybe, mapMaybe)
@@ -39,6 +39,8 @@ import Auth
 import PgQuery
 import RangeQuery
 import PgStructure
+
+import Prelude
 
 app :: AppConfig -> BL.ByteString -> Request -> H.Tx P.Postgres s Response
 app conf reqBody req =

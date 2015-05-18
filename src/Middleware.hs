@@ -4,7 +4,7 @@
 module Middleware where
 
 import Data.Maybe (fromMaybe)
-import Data.Monoid (mconcat) --7.10 redundant
+import Data.Monoid
 import Data.Text
 -- import Data.Pool(withResource, Pool)
 
@@ -22,6 +22,8 @@ import Network.URI (URI(..), parseURI)
 import Config (AppConfig(..))
 import Auth (LoginAttempt(..), signInRole, signInWithJWT, setRole, resetRole)
 import Codec.Binary.Base64.String (decode)
+
+import Prelude
 
 authenticated :: forall s. AppConfig ->
                  (Request -> H.Tx P.Postgres s Response) ->

@@ -6,7 +6,7 @@ module RangeQuery (
 , NonnegRange
 ) where
 
-import Control.Applicative --7.10 redundant
+import Control.Applicative
 import Network.HTTP.Types.Header
 
 import qualified Data.ByteString.Char8 as BS
@@ -19,6 +19,8 @@ import Text.Regex.TDFA ((=~))
 import Text.Read (readMaybe)
 
 import Data.Maybe (fromMaybe, listToMaybe)
+
+import Prelude
 
 type NonnegRange = Range Int
 

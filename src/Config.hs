@@ -1,13 +1,14 @@
 module Config where
 
 import Network.Wai
-import Control.Applicative --7.10 redundant
+import Control.Applicative
 import Data.Text (strip)
 import qualified Data.CaseInsensitive as CI
 import qualified Data.ByteString.Char8 as BS
 import Data.String.Conversions (cs)
 import Options.Applicative hiding (columns)
 import Network.Wai.Middleware.Cors (CorsResourcePolicy(..))
+import Prelude
 
 data AppConfig = AppConfig {
     configDbName :: String

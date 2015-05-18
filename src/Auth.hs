@@ -3,7 +3,7 @@ module Auth where
 
 import Data.Aeson
 import Control.Monad (mzero)
-import Control.Applicative ( (<*>), (<$>) ) --7.10 redundant
+import Control.Applicative
 import Crypto.BCrypt
 import Data.Text
 import Data.Monoid
@@ -15,6 +15,8 @@ import qualified Hasql.Postgres as P
 import qualified Web.JWT as JWT
 import Data.String.Conversions (cs)
 import PgQuery (pgFmtLit)
+
+import Prelude
 
 import System.IO.Unsafe
 

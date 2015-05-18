@@ -8,8 +8,10 @@ module TestTypes (
 import qualified Data.Aeson as JSON
 import Data.Aeson ((.:))
 -- import Data.Maybe (fromJust)
-import Control.Applicative ((<$>), (<*>)) --7.10 redundant
+import Control.Applicative
 import Control.Monad (mzero)
+
+import Prelude
 
 data IncPK = IncPK {
   incId :: Int
