@@ -117,7 +117,7 @@ app conf reqBody req =
             LoginSuccess role -> 
               return $ responseLBS status201 [ jsonH ] $
                 encode . object $ [("token", String $ tokenJWT jwtSecret (cs $ userId u) role)]
-            _  -> return $ responseLBS status400 [jsonH] $
+            _  -> return $ responseLBS status401 [jsonH] $
               encode . object $ [("message", String "Failed authentication.")]
 
     ([table], "POST") -> do

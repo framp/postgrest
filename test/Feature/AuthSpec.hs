@@ -43,7 +43,7 @@ spec = beforeAll
     post "/postgrest/sessions" [json| { "id":"jdoe", "pass": "NOPE" } |] 
       `shouldRespondWith` ResponseMatcher {
           matchBody = Just [json| {"message":"Failed authentication."} |]
-        , matchStatus = 400
+        , matchStatus = 401
         , matchHeaders = ["Content-Type" <:> "application/json"]
         }
 
