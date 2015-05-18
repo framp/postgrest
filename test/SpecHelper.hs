@@ -97,7 +97,7 @@ authHeaderBasic u p =
   
 authHeaderJWT :: String -> Header
 authHeaderJWT token =
-  (hAuthorization, cs $ "Bearer " ++ encode token)
+  (hAuthorization, cs $ "Bearer " ++ token)
 
 testPool :: IO(H.Pool P.Postgres)
 testPool = H.acquirePool pgSettings testPoolOpts
