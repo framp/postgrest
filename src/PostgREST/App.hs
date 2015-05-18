@@ -1,5 +1,5 @@
 {-# LANGUAGE FlexibleContexts #-}
-module App (app, sqlError, isSqlError) where
+module PostgREST.App (app, sqlError, isSqlError) where
 
 import Control.Monad (join)
 import Control.Arrow ((***), second)
@@ -34,11 +34,11 @@ import qualified Hasql as H
 import qualified Hasql.Backend as B
 import qualified Hasql.Postgres as P
 
-import Config (AppConfig(..))
-import Auth
-import PgQuery
-import RangeQuery
-import PgStructure
+import PostgREST.Config (AppConfig(..))
+import PostgREST.Auth
+import PostgREST.PgQuery
+import PostgREST.RangeQuery
+import PostgREST.PgStructure
 
 import Prelude
 

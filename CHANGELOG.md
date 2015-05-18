@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Return range headers in PATCH
 - Return PATCHed resources if header "Prefer: return=representation"
 - Allow nested objects and arrays in JSON post for jsonb columns
+- Expose PostgREST as a Haskell package
 
 ## [0.2.8.0] - 2015-04-17
 ### Added
