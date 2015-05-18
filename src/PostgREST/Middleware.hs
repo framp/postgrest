@@ -20,7 +20,7 @@ import Network.Wai (Application, requestHeaders, responseLBS, rawPathInfo,
 import Network.URI (URI(..), parseURI)
 
 import PostgREST.Config (AppConfig(..))
-import PostgREST.Auth (LoginAttempt(..), signInRole, setRole, resetRole)
+import PostgREST.Auth (LoginAttempt(..), signInRole, setRole, resetRole, signInWithJWT)
 import Codec.Binary.Base64.String (decode)
 
 import Prelude
